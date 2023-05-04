@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { PrimeiraPaginaComponent } from './primeira-pagina/primeira-pagina.component';
+import { SegundaPaginaComponent } from './segunda-pagina/segunda-pagina.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
-
+const routes: Routes = [
+  { path: 'primeira-pagina', component: PrimeiraPaginaComponent },
+  { path: 'segunda-pagina', component: SegundaPaginaComponent },
+  { path: '', redirectTo: 'primeira-pagina', pathMatch: 'full' },
+  {path: '**', component: PaginaNaoEncontradaComponent}
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
